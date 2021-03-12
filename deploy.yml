@@ -1,16 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-deployment
+  name: nodejs-deployment
+  labels:
+    app: nodejs
 spec:
-  replicas: 2
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nodejs
   template:
     metadata:
-      labels: # labels to select/identify the deployment
-        app: hello-world  
-    spec:     # pod spec                  
-      containers: 
-      - name: hello-world 
-        image: CONTAINER_IMAGE # image we pushed
-        ports:
-        - containerPort: 3000
+      labels:
+        app: nodejs
+    spec:
+      containers:
+        - name: nodejs
+          image: CONTAINER_IMAGE
+          ports:
+            - containerPort: 3000

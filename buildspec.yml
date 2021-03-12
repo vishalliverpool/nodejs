@@ -8,7 +8,7 @@ phases:
       - REPOSITORY_URI=218804696766.dkr.ecr.ap-south-1.amazonaws.com/docker
       - COMMIT_HASH=latest-$(echo $CODEBUILD_BUILD_NUMBER)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
-      - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$IMAGE_TAG"'@' test.yml
+      - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$IMAGE_TAG"'@' deploy.yml
   build:
     commands:
       - echo Build started on `date`

@@ -4,8 +4,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 218804696766.dkr.ecr.ap-south-1.amazonaws.com
-      - REPOSITORY_URI=218804696766.dkr.ecr.ap-south-1.amazonaws.com/docker
+      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 218804696766.dkr.ecr.us-east-2.amazonaws.com
+      - REPOSITORY_URI=218804696766.dkr.ecr.us-east-2.amazonaws.com/test
       - COMMIT_HASH=latest-$(echo $CODEBUILD_BUILD_NUMBER)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
       - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$IMAGE_TAG"'@' deploy.yml
